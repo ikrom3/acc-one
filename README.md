@@ -1,0 +1,126 @@
+# Налоговый калькулятор Узбекистана 2025
+
+Веб-приложение для расчета налогов в Узбекистане на 2025 год.
+
+## Возможности
+
+### 1. Калькулятор подоходного налога (НДФЛ)
+- Расчет стандартного НДФЛ (12%)
+- Расчет налога на дивиденды и проценты (5%)
+- Льготная ставка для текстиля, студентов, малоимущих семей (1%)
+- Ставка для Парка креативной индустрии (6%)
+- Расчет социального налога (12%, 25%, или льготная 1%)
+- Отображение чистого дохода после уплаты всех налогов
+
+### 2. Калькулятор налога на прибыль (для юридических лиц)
+- Расчет налога на прибыль (15%)
+- Расчет НДС (12%)
+- Отображение чистой прибыли после налогообложения
+
+### 3. Справочная информация
+- Актуальные налоговые ставки на 2025 год
+- Информация о льготных режимах налогообложения
+
+## Налоговые ставки 2025
+
+### НДФЛ (Подоходный налог физических лиц)
+- **Стандартная ставка**: 12%
+- **Дивиденды и проценты**: 5%
+- **Льготная ставка**: 1% (текстильная, обувная и кожевенная промышленность, студенты, малоимущие семьи)
+- **Парк креативной индустрии**: 6%
+
+### Социальный налог
+- **Обычные организации**: 12%
+- **Бюджетные организации**: 25%
+- **Льготная ставка**: 1% (для определенных категорий)
+
+### Налог на прибыль
+- **Общая ставка**: 15%
+- Ставки не будут повышаться до 2028 года (по указу президента)
+
+### НДС (Налог на добавленную стоимость)
+- **Основная ставка**: 12%
+- Ставка не будет повышаться до 2028 года
+
+## Использование
+
+1. Откройте файл `index.html` в веб-браузере
+2. Введите необходимые данные в соответствующие поля
+3. Выберите тип налога и ставку
+4. Нажмите кнопку "Рассчитать"
+5. Результаты отобразятся ниже формы
+
+## Технологии
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
+
+## Структура проекта
+
+```
+acc-one/
+├── index.html      # Главная страница приложения
+├── style.css       # Стили оформления
+├── script.js       # Логика расчетов
+└── README.md       # Документация проекта
+```
+
+## Особенности
+
+- Адаптивный дизайн для всех устройств
+- Интуитивно понятный интерфейс
+- Форматирование чисел в соответствии с российскими стандартами
+- Плавная анимация и современный дизайн
+- Поддержка клавиши Enter для быстрого расчета
+
+## Отказ от ответственности
+
+Данный калькулятор предоставляет приблизительные расчеты на основе общедоступной информации о налоговых ставках Узбекистана. Для получения точной информации и консультаций обратитесь к профессиональному налоговому консультанту или в налоговые органы.
+
+---
+
+# Uzbekistan Tax Calculator 2025
+
+Web application for calculating taxes in Uzbekistan for 2025.
+
+## Features
+
+### 1. Personal Income Tax Calculator
+- Standard personal income tax calculation (12%)
+- Dividends and interest tax (5%)
+- Preferential rate for textile, students, poor families (1%)
+- Creative Industry Park rate (6%)
+- Social tax calculation (12%, 25%, or preferential 1%)
+- Net income display after all taxes
+
+### 2. Corporate Profit Tax Calculator
+- Profit tax calculation (15%)
+- VAT calculation (12%)
+- Net profit display after taxation
+
+### 3. Reference Information
+- Current tax rates for 2025
+- Information about preferential tax regimes
+
+## Usage
+
+1. Open `index.html` in a web browser
+2. Enter the required data in the appropriate fields
+3. Select tax type and rate
+4. Click the "Calculate" button
+5. Results will be displayed below the form
+
+## Technologies
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
+
+## Disclaimer
+
+This calculator provides approximate calculations based on publicly available information about Uzbekistan tax rates. For accurate information and consultations, please contact a professional tax consultant or tax authorities.
+
+## License
+
+MIT License

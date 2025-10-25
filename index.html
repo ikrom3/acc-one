@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Налоговый калькулятор Узбекистана 2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Налоговый калькулятор Узбекистана</h1>
+            <p class="subtitle">Расчет налогов на 2025 год</p>
+        </header>
+
+        <div class="calculator-section">
+            <h2>Калькулятор подоходного налога (НДФЛ)</h2>
+
+            <div class="form-group">
+                <label for="income">Ежемесячный доход (сум):</label>
+                <input type="number" id="income" placeholder="Например: 10000000" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="taxType">Тип налога:</label>
+                <select id="taxType">
+                    <option value="12">Стандартный НДФЛ (12%)</option>
+                    <option value="5">Дивиденды и проценты (5%)</option>
+                    <option value="1">Льготная ставка (1%) - текстиль, студенты, малоимущие</option>
+                    <option value="6">Парк креативной индустрии (6%)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="socialTaxType">Социальный налог:</label>
+                <select id="socialTaxType">
+                    <option value="12">Обычный (12%)</option>
+                    <option value="25">Бюджетные организации (25%)</option>
+                    <option value="1">Льготная ставка (1%)</option>
+                    <option value="0">Не применяется</option>
+                </select>
+            </div>
+
+            <button class="calculate-btn" onclick="calculatePersonalTax()">Рассчитать</button>
+
+            <div id="personalResult" class="result-box hidden">
+                <h3>Результаты расчета:</h3>
+                <div class="result-item">
+                    <span>Валовой доход:</span>
+                    <span id="grossIncome" class="amount"></span>
+                </div>
+                <div class="result-item">
+                    <span>НДФЛ:</span>
+                    <span id="incomeTax" class="amount tax"></span>
+                </div>
+                <div class="result-item">
+                    <span>Социальный налог:</span>
+                    <span id="socialTax" class="amount tax"></span>
+                </div>
+                <div class="result-item total">
+                    <span>Всего налогов:</span>
+                    <span id="totalTax" class="amount tax"></span>
+                </div>
+                <div class="result-item total">
+                    <span>Чистый доход (на руки):</span>
+                    <span id="netIncome" class="amount"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="calculator-section">
+            <h2>Калькулятор налога на прибыль (для юр. лиц)</h2>
+
+            <div class="form-group">
+                <label for="revenue">Выручка (сум):</label>
+                <input type="number" id="revenue" placeholder="Например: 100000000" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="expenses">Расходы (сум):</label>
+                <input type="number" id="expenses" placeholder="Например: 70000000" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="vatApplicable">Применяется НДС:</label>
+                <select id="vatApplicable">
+                    <option value="yes">Да (12%)</option>
+                    <option value="no">Нет</option>
+                </select>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateCorporateTax()">Рассчитать</button>
+
+            <div id="corporateResult" class="result-box hidden">
+                <h3>Результаты расчета:</h3>
+                <div class="result-item">
+                    <span>Выручка:</span>
+                    <span id="corpRevenue" class="amount"></span>
+                </div>
+                <div class="result-item" id="vatRow">
+                    <span>НДС к уплате:</span>
+                    <span id="vatAmount" class="amount tax"></span>
+                </div>
+                <div class="result-item">
+                    <span>Расходы:</span>
+                    <span id="corpExpenses" class="amount"></span>
+                </div>
+                <div class="result-item">
+                    <span>Прибыль до налогообложения:</span>
+                    <span id="profit" class="amount"></span>
+                </div>
+                <div class="result-item">
+                    <span>Налог на прибыль (15%):</span>
+                    <span id="profitTax" class="amount tax"></span>
+                </div>
+                <div class="result-item total">
+                    <span>Чистая прибыль:</span>
+                    <span id="netProfit" class="amount"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>Справочная информация о налогах в Узбекистане (2025)</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>НДФЛ</h4>
+                    <ul>
+                        <li>Стандартная ставка: 12%</li>
+                        <li>Дивиденды и проценты: 5%</li>
+                        <li>Льготная ставка: 1% (текстиль, студенты, малоимущие семьи)</li>
+                        <li>Креативная индустрия: 6%</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>Социальный налог</h4>
+                    <ul>
+                        <li>Обычные организации: 12%</li>
+                        <li>Бюджетные организации: 25%</li>
+                        <li>Льготная ставка: 1% (для определенных категорий)</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>Налог на прибыль</h4>
+                    <ul>
+                        <li>Общая ставка: 15%</li>
+                        <li>Ставки не будут повышаться до 2028 года</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>НДС</h4>
+                    <ul>
+                        <li>Основная ставка: 12%</li>
+                        <li>Ставка не будет повышаться до 2028 года</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Налоговый калькулятор Узбекистана &copy; 2025</p>
+            <p class="disclaimer">Данный калькулятор предоставляет приблизительные расчеты. Для точной информации обратитесь к налоговому консультанту.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
