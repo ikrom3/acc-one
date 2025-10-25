@@ -17,6 +17,15 @@
             <h2>Калькулятор подоходного налога (НДФЛ)</h2>
 
             <div class="form-group">
+                <label for="residencyStatus">Статус резидентства:</label>
+                <select id="residencyStatus" onchange="updateTaxOptions()">
+                    <option value="resident">Резидент (более 183 дней в году)</option>
+                    <option value="non-resident">Нерезидент (менее 183 дней в году)</option>
+                </select>
+                <p class="info-text">Резидент - лицо, находящееся в Узбекистане более 183 календарных дней за последние 12 месяцев</p>
+            </div>
+
+            <div class="form-group">
                 <label for="income">Ежемесячный доход (сум):</label>
                 <input type="number" id="income" placeholder="Например: 10000000" min="0">
             </div>
@@ -124,12 +133,22 @@
             <h3>Справочная информация о налогах в Узбекистане (2025)</h3>
             <div class="info-grid">
                 <div class="info-card">
-                    <h4>НДФЛ</h4>
+                    <h4>НДФЛ для резидентов</h4>
                     <ul>
                         <li>Стандартная ставка: 12%</li>
                         <li>Дивиденды и проценты: 5%</li>
                         <li>Льготная ставка: 1% (текстиль, студенты, малоимущие семьи)</li>
                         <li>Креативная индустрия: 6%</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>НДФЛ для нерезидентов</h4>
+                    <ul>
+                        <li>Доходы от работы: 20%</li>
+                        <li>Дивиденды и проценты: 10%</li>
+                        <li>Прочие доходы: 20%</li>
+                        <li>Телекоммуникации/перевозки: 6%</li>
+                        <li>IT-парк (с льготами): 5%</li>
                     </ul>
                 </div>
                 <div class="info-card">

@@ -6,20 +6,66 @@ function formatNumber(number) {
     }).format(number);
 }
 
+// Обновление опций налога в зависимости от статуса резидентства
+function updateTaxOptions() {
+    const residencyStatus = document.getElementById('residencyStatus').value;
+    const taxTypeSelect = document.getElementById('taxType');
+    const socialTaxGroup = document.getElementById('socialTaxType').closest('.form-group');
+
+    // Очищаем текущие опции
+    taxTypeSelect.innerHTML = '';
+
+    if (residencyStatus === 'resident') {
+        // Опции для резидентов
+        taxTypeSelect.innerHTML = `
+            <option value="12">Стандартный НДФЛ (12%)</option>
+            <option value="5">Дивиденды и проценты (5%)</option>
+            <option value="1">Льготная ставка (1%) - текстиль, студенты, малоимущие</option>
+            <option value="6">Парк креативной индустрии (6%)</option>
+        `;
+        // Показываем поле социального налога для резидентов
+        socialTaxGroup.style.display = 'block';
+    } else {
+        // Опции для нерезидентов
+        taxTypeSelect.innerHTML = `
+            <option value="20">Доходы от работы (20%)</option>
+            <option value="10">Дивиденды и проценты (10%)</option>
+            <option value="20-other">Прочие доходы (20%)</option>
+            <option value="6">Телекоммуникации/международные перевозки (6%)</option>
+            <option value="5">IT-парк с льготами (5%)</option>
+        `;
+        // Скрываем поле социального налога для нерезидентов
+        socialTaxGroup.style.display = 'none';
+    }
+}
+
 // Калькулятор подоходного налога
 function calculatePersonalTax() {
     const income = parseFloat(document.getElementById('income').value);
-    const taxRate = parseFloat(document.getElementById('taxType').value);
+    const taxTypeValue = document.getElementById('taxType').value;
     const socialTaxRate = parseFloat(document.getElementById('socialTaxType').value);
+    const residencyStatus = document.getElementById('residencyStatus').value;
 
     if (isNaN(income) || income <= 0) {
         alert('Пожалуйста, введите корректную сумму дохода');
         return;
     }
 
+    // Определяем ставку налога (обрабатываем специальный случай "20-other")
+    let taxRate = parseFloat(taxTypeValue);
+    if (taxTypeValue === '20-other') {
+        taxRate = 20;
+    }
+
     // Расчет налогов
     const incomeTax = income * (taxRate / 100);
-    const socialTax = income * (socialTaxRate / 100);
+
+    // Социальный налог для нерезидентов обычно не применяется
+    let socialTax = 0;
+    if (residencyStatus === 'resident') {
+        socialTax = income * (socialTaxRate / 100);
+    }
+
     const totalTax = incomeTax + socialTax;
     const netIncome = income - totalTax;
 
@@ -94,8 +140,11 @@ function calculateCorporateTax() {
 
 // Обработка нажатия Enter в полях ввода
 document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация опций налога при загрузке страницы
+    updateTaxOptions();
+
     // Для калькулятора подоходного налога
-    const personalInputs = ['income', 'taxType', 'socialTaxType'];
+    const personalInputs = ['income', 'taxType', 'socialTaxType', 'residencyStatus'];
     personalInputs.forEach(id => {
         const element = document.getElementById(id);
         element.addEventListener('keypress', function(e) {

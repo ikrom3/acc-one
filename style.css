@@ -81,6 +81,17 @@ header h1 {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
+.info-text {
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: #666;
+    font-style: italic;
+    padding: 8px 12px;
+    background: #f0f4ff;
+    border-radius: 6px;
+    border-left: 3px solid #667eea;
+}
+
 .calculate-btn {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
